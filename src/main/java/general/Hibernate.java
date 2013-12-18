@@ -2,9 +2,12 @@ package main.java.general;
 
 import main.java.dao.AuthorDao;
 import main.java.dao.BookDao;
+import main.java.forms.FormTable;
 import main.java.table.Author;
 import main.java.table.Book;
 
+import javax.swing.*;
+import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -39,7 +42,6 @@ public class Hibernate {
         for (Book book : books) {
             System.out.println(book.getId() + " | " + book.getIsbn() + " | " +
                                book.getTitle() + " | " + book.getDescription());
-
         }
         /*
         List<Author> authors = authorDao.getAuthors();
@@ -50,5 +52,16 @@ public class Hibernate {
                                author.getMiddle_name() + " | " + author.getLast_name());
         }
         */
+
+        // Forms block;
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                JFrame bookFrame = new FormTable("Book");
+                bookFrame.pack();
+                bookFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                bookFrame.setVisible(true);
+            }
+        });
     }
 }
