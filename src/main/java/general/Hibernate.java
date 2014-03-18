@@ -1,10 +1,12 @@
 package main.java.general;
 
 import main.java.dao.AuthorDao;
+import main.java.dao.BookAuthorsDao;
 import main.java.dao.BookDao;
 import main.java.forms.FormTable;
 import main.java.table.Author;
 import main.java.table.Book;
+import main.java.table.BookAuthors;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +18,7 @@ public class Hibernate {
         Factory factory = Factory.getInstance();
         BookDao bookDao = factory.getBookDao();
         AuthorDao authorDao = factory.getAuthorDao();
+        BookAuthorsDao bookAuthorsDao = factory.getBookAuthorsDao();
 
     // uncomment this block for adding new books in table "books"
         /*Book book = new Book();
@@ -35,7 +38,7 @@ public class Hibernate {
         authorDao.addAuthor(author_new);*/
 
     // uncomment this block for printing in console all books from table "book"
-        List<Book> books = bookDao.getBooks();
+        /*List<Book> books = bookDao.getBooks();
 
         System.out.println("id  |  isbn  |  title  |  description");
 
@@ -43,6 +46,7 @@ public class Hibernate {
             System.out.println(book.getId() + " | " + book.getIsbn() + " | " +
                                book.getTitle() + " | " + book.getDescription());
         }
+        */
         /*
         List<Author> authors = authorDao.getAuthors();
         System.out.println("id | first_name | middle_name | last_name");
@@ -52,6 +56,23 @@ public class Hibernate {
                                author.getMiddle_name() + " | " + author.getLast_name());
         }
         */
+
+        List<BookAuthors> bookAuthors = bookAuthorsDao.getBookAuthors();
+        //System.out.print("id  |  isbn  |  title  |  description             ");
+        System.out.println("id | first_name | middle_name | last_name");
+
+        for (BookAuthors bookAuthor : bookAuthors) {
+            Book book = bookAuthor.getBook();
+            Author author = bookAuthor.getAuthor();
+
+            System.out.print(book.getId() + " | " + book.getIsbn() + " | " +
+                    book.getTitle() + " | " + book.getDescription() + "         ");
+
+            System.out.println(author.getId() + " | " + author.getFirst_name() + " | " +
+                    author.getMiddle_name() + " | " + author.getLast_name());
+        }
+
+
 
         // Forms block;
         SwingUtilities.invokeLater(new Runnable() {

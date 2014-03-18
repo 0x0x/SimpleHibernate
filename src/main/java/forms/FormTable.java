@@ -10,13 +10,6 @@ import main.java.general.Factory;
 
 import java.sql.SQLException;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Lekarto
- * Date: 18.12.13
- * Time: 20:25
- * To change this template use File | Settings | File Templates.
- */
 public class FormTable extends JFrame {
     private JButton btnAdd, btnDelete, btnCrear;
     private JTable table;

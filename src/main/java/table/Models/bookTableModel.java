@@ -3,13 +3,6 @@ package main.java.table.Models;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Lekarto
- * Date: 18.12.13
- * Time: 20:34
- * To change this template use File | Settings | File Templates.
- */
 public class bookTableModel extends AbstractTableModel {
     private int colCount = 4;
     private ArrayList<String []> dataArrayList;

@@ -1,14 +1,17 @@
 package main.java.general;
 
 import main.java.dao.AuthorDao;
+import main.java.dao.BookAuthorsDao;
 import main.java.dao.BookDao;
 import main.java.dao.implementation.AuthorDaoImpl;
+import main.java.dao.implementation.BookAuthorsDaoImpl;
 import main.java.dao.implementation.BookDaoImpl;
 
 public class Factory {
-    public static Factory instance = new Factory();
-    public BookDao bookDao;
-    public AuthorDao authorDao;
+    private static Factory instance = new Factory();
+    private BookDao bookDao;
+    private AuthorDao authorDao;
+    private BookAuthorsDao bookAuthorsDao;
 
     public Factory() { }
 
@@ -28,5 +31,12 @@ public class Factory {
             authorDao = new AuthorDaoImpl();
         }
         return authorDao;
+    }
+
+    public BookAuthorsDao getBookAuthorsDao() {
+        if (bookAuthorsDao == null) {
+            bookAuthorsDao = new BookAuthorsDaoImpl();
+        }
+        return bookAuthorsDao;
     }
 }

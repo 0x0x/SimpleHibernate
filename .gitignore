@@ -1,0 +1,10 @@
+*.class
+*.json
+Data*
+
+# Package Files #
+*.jar
+*.war
+*.ear
+.idea
+*.iml
